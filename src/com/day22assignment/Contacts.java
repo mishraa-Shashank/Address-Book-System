@@ -21,12 +21,23 @@ public class Contacts {
     public Contacts() {
     }
 
+    public Contacts(String firstName, String lastName, String address, String cityName, String stateName, int zipCode, long pNumber, String emailId) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.city = cityName;
+        this.state = stateName;
+        this.zip = zipCode;
+        this.phoneNumber = pNumber;
+        this.emailAddress = emailId;
+    }
+
     /**
      * using getter & setter to get & set the values
      * @return
      */
-    public String getFirstName() {
-        return firstName;
+    public long getPhoneNumber() {
+        return phoneNumber;
     }
 
     public void setFirstName(String firstName) {

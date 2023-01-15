@@ -12,6 +12,7 @@ import java.util.Scanner;
  * 3) Show Menu for user to Select Operation on AddressBook
  */
 public class AddressBookMain {
+    AddressBook book = new AddressBook();
     public static void main(String[] args) {
         System.out.println("\nWelcome to Address Book Program");
         /*
@@ -34,7 +35,7 @@ public class AddressBookMain {
 
     private static int showMenu() {
         System.out.println("\nEnter 0 to exit\n");
-        System.out.print("1. CREATE");
+        System.out.print("1. CREATE \n2. READ \n3. UPDATE");
         System.out.println("\nEnter your choice:");
 
         int choice;
@@ -48,36 +49,16 @@ public class AddressBookMain {
     void choose(int choice) {
         switch(choice){
             case 1:
-                addContact();
+                book.addContact();
                 break;
+            case 2:
+                book.displayContacts();
+                break;
+            case 3:
+                book.updateContact();
+                break;
+            default:
+                System.out.println("Please choose between 1 to 3");
         }
-    }
-
-    /**
-     * Method to Add New Contact to AddressBook
-     */
-    private void addContact() {
-        /*
-        Created Contacts Object for Getter and Setter Methods
-         */
-        Contacts contacts = new Contacts();
-
-        System.out.println("Enter the Contact Details -");
-        System.out.print("Enter your First Name : ");
-        contacts.setFirstName(new Scanner(System.in).next());
-        System.out.print("Enter your Last Name : ");
-        contacts.setLastName(new Scanner(System.in).nextLine());
-        System.out.print("Enter your Address : ");
-        contacts.setAddress(new Scanner(System.in).nextLine());
-        System.out.print("Enter your city name: ");
-        contacts.setCity(new Scanner(System.in).nextLine());
-        System.out.print("Enter your state name : ");
-        contacts.setState(new Scanner(System.in).nextLine());
-        System.out.print("Enter your zip Code : ");
-        contacts.setZip(new Scanner(System.in).nextInt());
-        System.out.print("Enter your Phone Number : ");
-        contacts.setPhoneNumber(new Scanner(System.in).nextLong(10));
-        System.out.print("Enter your Email ID : ");
-        contacts.setEmailAddress(new Scanner(System.in).next());
     }
 }
