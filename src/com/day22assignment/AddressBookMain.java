@@ -57,9 +57,10 @@ public class AddressBookMain {
                 book.updateContact();
                 break;
             case 4:
+                book.deleteContact();
                 break;
             default:
-                System.out.println("Please choose between 1 to 3");
+                System.out.println("Please choose between 1 to 4");
         }
     }
 }

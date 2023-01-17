@@ -11,10 +11,11 @@ public class AddressBook {
        Created Contacts Object for Getter and Setter Methods
         */
     Contacts address = new Contacts();
+
     /**
      * Method to Add Contact to AddressBook
      */
-    public void addContact() {
+    void addContact() {
         System.out.println("Enter First Name : ");
         address.setFirstName(sc.nextLine());
 
@@ -41,6 +42,7 @@ public class AddressBook {
 
         System.out.println(address);
     }
+
     /**
      * Method to update existent contact
      * 1) we are taking phone number input from the user to check that the contact is present in the address book or not
@@ -55,6 +57,32 @@ public class AddressBook {
         } else {
             System.out.println("Please Enter Valid Phone Number!");
             updateContact();
+        }
+    }
+
+    /**
+     * method to delete the contact from the address book
+     * 1) taking mobile number of the person to delete the contact
+     * 2) if condition is true then the contact will be deleted,
+     * 3) otherwise again ask for valid mobile number
+     */
+    void deleteContact() {
+        System.out.println("Enter Phone Number Of A Person To Delete : ");
+        String deleteByPhoneNumber = sc.nextLine();
+        /*
+        2) if condition is true then the contact will be deleted
+         */
+        if (address.getPhoneNumber().equals(deleteByPhoneNumber)) {
+            address = null;
+            System.out.println(address);
+            System.out.println("Details Deleted Successfully.");
+        }
+        /*
+        3) otherwise again ask for valid mobile number
+         */
+        else {
+            System.out.println("Please Enter Valid Phone Number!");
+            deleteContact();
         }
     }
 }
