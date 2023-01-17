@@ -11,8 +11,8 @@ public class Contacts {
     private String address;
     private String city;
     private String state;
-    private int zip;
-    private long phoneNumber;
+    private String zip;
+    private String phoneNumber;
     private String emailAddress;
 
     /**
@@ -21,7 +21,7 @@ public class Contacts {
     public Contacts() {
     }
 
-    public Contacts(String firstName, String lastName, String address, String cityName, String stateName, int zipCode, long pNumber, String emailId) {
+    public Contacts(String firstName, String lastName, String address, String cityName, String stateName, String zipCode, String pNumber, String emailId) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -36,8 +36,8 @@ public class Contacts {
      * using getter & setter to get & set the values
      * @return
      */
-    public long getPhoneNumber() {
-        return phoneNumber;
+    public String getPhoneNumber() {
+        return this.phoneNumber;
     }
 
     public void setFirstName(String firstName) {
@@ -60,11 +60,11 @@ public class Contacts {
         this.state = state;
     }
 
-    public void setZip(int zip) {
+    public void setZip(String zip) {
         this.zip = zip;
     }
 
-    public void setPhoneNumber(long phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

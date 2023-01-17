@@ -35,7 +35,7 @@ public class AddressBookMain {
 
     private static int showMenu() {
         System.out.println("\nEnter 0 to exit\n");
-        System.out.print("1. CREATE \n2. READ \n3. UPDATE");
+        System.out.print("1. CREATE \n2. READ \n3. UPDATE \n4. DELETE");
         System.out.println("\nEnter your choice:");
 
         int choice;
@@ -52,10 +52,11 @@ public class AddressBookMain {
                 book.addContact();
                 break;
             case 2:
-                book.displayContacts();
                 break;
             case 3:
                 book.updateContact();
+                break;
+            case 4:
                 break;
             default:
                 System.out.println("Please choose between 1 to 3");

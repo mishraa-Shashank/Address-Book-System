@@ -1,48 +1,46 @@
 package com.day22assignment;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
  * @author Shashank
  */
 public class AddressBook {
+    Scanner sc = new Scanner(System.in);
     /*
        Created Contacts Object for Getter and Setter Methods
         */
-    Contacts contacts = new Contacts();
-    ArrayList<Contacts> list = new ArrayList<>();
+    Contacts address = new Contacts();
     /**
      * Method to Add Contact to AddressBook
      */
     public void addContact() {
+        System.out.println("Enter First Name : ");
+        address.setFirstName(sc.nextLine());
 
-        System.out.println("Enter the Contact Details -");
-        System.out.print("Enter your First Name : ");
-        String fname = new Scanner(System.in).next();
-        System.out.print("Enter your Last Name : ");
-        String lname = new Scanner(System.in).nextLine();
-        System.out.print("Enter your Address : ");
-        String addr = new Scanner(System.in).nextLine();
-        System.out.print("Enter your city name: ");
-        String cityName = new Scanner(System.in).nextLine();
-        System.out.print("Enter your state name : ");
-        String stateName = new Scanner(System.in).nextLine();
-        System.out.print("Enter your zip Code : ");
-        int zipCode = new Scanner(System.in).nextInt();
-        System.out.print("Enter your Phone Number : ");
-        long pNumber = new Scanner(System.in).nextLong(10);
-        System.out.print("Enter your Email ID : ");
-        String emailId = new Scanner(System.in).next();
-        list.add(new Contacts(fname, lname, addr, cityName, stateName, zipCode, pNumber, emailId));
+        System.out.println("Enter Last Name : ");
+        address.setLastName(sc.nextLine());
+
+        System.out.println("Enter Address : ");
+        address.setAddress(sc.nextLine());
+
+        System.out.println("Enter City Name : ");
+        address.setCity(sc.nextLine());
+
+        System.out.println("Enter State Name : ");
+        address.setState(sc.nextLine());
+
+        System.out.println("Enter Zip Code : ");
+        address.setZip(sc.nextLine());
+
+        System.out.println("Enter Phone Number : ");
+        address.setPhoneNumber(sc.nextLine());
+
+        System.out.println("Enter Email Id : ");
+        address.setEmailAddress(sc.nextLine());
+
+        System.out.println(address);
     }
-
-    void displayContacts() {
-        for (Contacts c:list) {
-            System.out.println(c);
-        }
-    }
-
     /**
      * Method to update existent contact
      * 1) we are taking phone number input from the user to check that the contact is present in the address book or not
@@ -50,41 +48,13 @@ public class AddressBook {
      * 3) If not present then show Contact is not in address book
      */
     void updateContact() {
-        System.out.println("Enter the phone number : ");
-        /*
-        1) we are taking phone number input from the user to check that the contact is present in the address book or not
-         */
-        long phoneNumber = new Scanner(System.in).nextLong(10);
-
-        boolean isFound = false;
-        /*
-        2) If present then update the details of that contact
-         */
-        if (phoneNumber == contacts.getPhoneNumber()) {
-            System.out.print("Enter new First Name : ");
-            String fname = new Scanner(System.in).next();
-            System.out.print("Enter new Last Name : ");
-            String lname = new Scanner(System.in).nextLine();
-            System.out.print("Enter new Address : ");
-            String addr = new Scanner(System.in).nextLine();
-            System.out.print("Enter new city name : ");
-            String cityName = new Scanner(System.in).nextLine();
-            System.out.print("Enter new state name : ");
-            String stateName = new Scanner(System.in).nextLine();
-            System.out.print("Enter new zip Code : ");
-            int zipCode = new Scanner(System.in).nextInt();
-            System.out.print("Enter new Phone Number : ");
-            long pNumber = new Scanner(System.in).nextLong(10);
-            System.out.print("Enter new Email ID : ");
-            String emailId = new Scanner(System.in).next();
-            list.add(new Contacts(fname, lname, addr, cityName, stateName, zipCode, pNumber, emailId));
-            System.out.println("\nContact updated successfully!");
-        }
-        /*
-        3) If not present then show Contact is not in address book
-         */
-        if (!isFound) {
-            System.out.println("Contact is Not found ");
+        System.out.println("Enter Phone Number Of A Person To Edit :  ");
+        String editByPhoneNumber = sc.nextLine();
+        if (address.getPhoneNumber().equals(editByPhoneNumber)) {
+            addContact();
+        } else {
+            System.out.println("Please Enter Valid Phone Number!");
+            updateContact();
         }
     }
 }
