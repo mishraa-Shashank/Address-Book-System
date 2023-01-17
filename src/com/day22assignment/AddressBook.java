@@ -10,36 +10,36 @@ public class AddressBook {
     /*
        Created Contacts Object for Getter and Setter Methods
         */
-    Contacts address = new Contacts();
+    Contacts contacts = new Contacts();
     /**
      * Method to Add Contact to AddressBook
      */
     public void addContact() {
         System.out.println("Enter First Name : ");
-        address.setFirstName(sc.nextLine());
+        contacts.setFirstName(sc.nextLine());
 
         System.out.println("Enter Last Name : ");
-        address.setLastName(sc.nextLine());
+        contacts.setLastName(sc.nextLine());
 
         System.out.println("Enter Address : ");
-        address.setAddress(sc.nextLine());
+        contacts.setAddress(sc.nextLine());
 
         System.out.println("Enter City Name : ");
-        address.setCity(sc.nextLine());
+        contacts.setCity(sc.nextLine());
 
         System.out.println("Enter State Name : ");
-        address.setState(sc.nextLine());
+        contacts.setState(sc.nextLine());
 
         System.out.println("Enter Zip Code : ");
-        address.setZip(sc.nextLine());
+        contacts.setZip(sc.nextLine());
 
         System.out.println("Enter Phone Number : ");
-        address.setPhoneNumber(sc.nextLine());
+        contacts.setPhoneNumber(sc.nextLine());
 
         System.out.println("Enter Email Id : ");
-        address.setEmailAddress(sc.nextLine());
+        contacts.setEmailAddress(sc.nextLine());
 
-        System.out.println(address);
+        System.out.println(contacts);
     }
     /**
      * Method to update existent contact
@@ -50,7 +50,7 @@ public class AddressBook {
     void updateContact() {
         System.out.println("Enter Phone Number Of A Person To Edit :  ");
         String editByPhoneNumber = sc.nextLine();
-        if (address.getPhoneNumber().equals(editByPhoneNumber)) {
+        if (contacts.getPhoneNumber().equals(editByPhoneNumber)) {
             addContact();
         } else {
             System.out.println("Please Enter Valid Phone Number!");
