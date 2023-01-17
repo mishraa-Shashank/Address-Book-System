@@ -42,6 +42,8 @@ public class AddressBook {
         contacts.setEmailAddress(sc.nextLine());
 
         System.out.println(contacts);
+        list.add(contacts);
+        System.out.println("\nContact Added Successfully!");
     }
     /**
      * Method to update existent contact
