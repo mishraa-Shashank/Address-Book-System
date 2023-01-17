@@ -52,11 +52,13 @@ public class AddressBookMain {
                 book.addContact();
                 break;
             case 2:
+                book.showContacts();
                 break;
             case 3:
                 book.updateContact();
                 break;
             case 4:
+                book.deleteContact();
                 break;
             default:
                 System.out.println("Please choose between 1 to 3");
