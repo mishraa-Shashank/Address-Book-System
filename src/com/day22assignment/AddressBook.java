@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 /**
  * @author Shashank
@@ -290,7 +291,7 @@ public class AddressBook {
     }
 
     /**
-     *
+     * method is used to perform operation on address book
      */
     void operationInBook() {
         int option = sc.nextInt();
@@ -319,4 +320,95 @@ public class AddressBook {
             }
         } while (option != 0);
     }
+    /**
+     * created a method to search person by city from the map
+     */
+    void searchPersonByCityMap() {
+        System.out.println("Enter City Name To Search Person : ");
+        String searchByCity = sc.nextLine();
+        map.keySet().forEach(key -> map.get(key)
+                .stream().filter(i -> i.getCity().equals(searchByCity))
+                .collect(Collectors.toList()).forEach(System.out::println));
+    }
+    /**
+     * created a method to search person by state from the map
+     */
+    void searchPersonByStateMap() {
+        System.out.println("Enter State Name To Search Person : ");
+        String searchByState = sc.nextLine();
+        map.keySet().forEach(key -> map.get(key)
+                .stream().filter(i -> i.getState().equals(searchByState))
+                .collect(Collectors.toList()).forEach(System.out::println));
+    }
+    /**
+     * created a method to search person by city from the arraylist
+     */
+    void searchPersonByCityList() {
+        System.out.println("Enter City Name To Search Person : ");
+        String searchByCity = sc.nextLine();
+        list.stream().filter(i -> i.getCity().equals(searchByCity))
+                .collect(Collectors.toList()).forEach(System.out::println);
+    }
+    /**
+     * created a method to search person by state from the arraylist
+     */
+    void searchPersonByStateList() {
+        System.out.println("Enter State Name To Search Person : ");
+        String searchByState = sc.nextLine();
+        list.stream().filter(i -> i.getState().equals(searchByState))
+                .collect(Collectors.toList()).forEach(System.out::println);
+    }
+    /**
+     * method to search the contact from the address book
+     */
+    void searchPersonFromList() {
+        boolean exit = true;
+        while (exit) {
+            System.out.print("\n Enter 0 to exit \n1. Search Person By City \n2. Search Person By State");
+
+            int option = sc.nextInt();
+            sc.nextLine();
+            switch (option) {
+                case 0:
+                    exit = false;
+                    break;
+                case 1:
+                    searchPersonByCityList();
+                    break;
+                case 2:
+                    searchPersonByStateList();
+                    break;
+                default:
+                    System.out.println("Please Choose Valid Option!");
+                    break;
+            }
+        }
+    }
+    /**
+     * method to search contact from the map
+     */
+    void searchPersonFromMap() {
+        boolean exit = true;
+        while (exit) {
+            System.out.print("\n Enter 0 to exit \n1. Search Person By City \n2. Search Person By State");
+
+            int option = sc.nextInt();
+            sc.nextLine();
+            switch (option) {
+                case 0:
+                    exit = false;
+                    break;
+                case 1:
+                    searchPersonByCityMap();
+                    break;
+                case 2:
+                    searchPersonByStateMap();
+                    break;
+                default:
+                    System.out.println("Please Choose Valid Option!");
+                    break;
+            }
+        }
+    }
+
 }
