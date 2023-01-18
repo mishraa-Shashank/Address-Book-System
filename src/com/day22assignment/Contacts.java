@@ -39,6 +39,12 @@ public class Contacts {
     public String getPhoneNumber() {
         return this.phoneNumber;
     }
+    public String getCity() {
+        return this.city;
+    }
+    public String getState() {
+        return this.state;
+    }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
