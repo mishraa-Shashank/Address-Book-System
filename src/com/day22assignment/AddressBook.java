@@ -42,6 +42,13 @@ public class AddressBook {
 
         System.out.println("Enter Phone Number : ");
         contacts.setPhoneNumber(sc.nextLine());
+        /**
+         * we are checking that duplicate contact is present in list or not
+         */
+        if (duplicateCheck(contacts.getPhoneNumber())) {
+            System.out.println("Given Phone Number is Already Exists!");
+            return;
+        }
 
         System.out.println("Enter Email Id : ");
         contacts.setEmailAddress(sc.nextLine());
@@ -49,6 +56,18 @@ public class AddressBook {
         System.out.println(contacts);
         list.add(contacts);
         System.out.println("\nContact Added Successfully!");
+    }
+
+    /**
+     * method to check the duplication in list
+     * @param phoneNumber - phone number as a parameter
+     * @return
+     */
+    private boolean duplicateCheck(String phoneNumber) {
+        Contacts check = list.stream()
+                .filter(i -> i.getPhoneNumber().equals(phoneNumber))
+                .findFirst().orElse(null);
+        return check != null;
     }
 
     /**
