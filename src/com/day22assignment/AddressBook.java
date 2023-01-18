@@ -410,7 +410,7 @@ public class AddressBook {
             }
         }
     }
-    
+
     /**
      * created a method to view person by city from the arraylist
      */
