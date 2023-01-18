@@ -384,6 +384,7 @@ public class AddressBook {
             }
         }
     }
+    
     /**
      * method to search contact from the map
      */
