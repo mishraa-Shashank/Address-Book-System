@@ -1,10 +1,9 @@
 package com.day22assignment;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.groupingBy;
 
 /**
  * @author Shashank
@@ -12,6 +11,7 @@ import java.util.stream.Collectors;
 public class AddressBook {
     public static final String MAP = "map";
     Map<String, ArrayList<Contacts>> map = new HashMap<>();
+    Map<String, List<Contacts>> viewMap;
     ArrayList<Contacts> list;
     Scanner sc = new Scanner(System.in);
     /*
@@ -410,5 +410,57 @@ public class AddressBook {
             }
         }
     }
+    
+    /**
+     * created a method to view person by city from the arraylist
+     */
+    void viewPersonByCityList() {
+        viewMap = new HashMap<>();
+        list.stream().collect(groupingBy(Contacts::getCity))
+                .forEach((key, value) -> viewMap.merge(key, value, (city, details) -> {
+                    city.addAll(details);
+                    return city;
+                }));
+        viewMap.forEach(((key, value) -> System.out.println("[" + key.toUpperCase() + "]" + "->" + value + "\n")));
+    }
 
+    /**
+     * created a method to view person by state from the arraylist
+     */
+    void viewPersonByStateList() {
+        viewMap = new HashMap<>();
+        list.stream().collect(groupingBy(Contacts::getState))
+                .forEach((key, value) -> viewMap.merge(key, value, (state, details) -> {
+                    state.addAll(details);
+                    return state;
+                }));
+        viewMap.forEach(((key, value) -> System.out.println("[" + key.toUpperCase() + "]" + "->" + value + "\n")));
+    }
+
+    /**
+     * method to view contact
+     */
+    void viewPersonFromList() {
+        boolean exit = true;
+        while (exit) {
+            System.out.print("\nEnter 0 to exit \n1.View Person By City \n2. View Person By State");
+
+            int option = sc.nextInt();
+            sc.nextLine();
+            switch (option) {
+                case 0:
+                    exit = false;
+                    break;
+                case 1:
+                    viewPersonByCityList();
+                    break;
+                case 2:
+                    viewPersonByStateList();
+                    break;
+                default:
+                    System.out.println("Please Choose Valid Option!");
+                    break;
+            }
+        }
+    }
 }
