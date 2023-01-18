@@ -3,6 +3,7 @@ package com.day22assignment;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 
 /**
@@ -12,6 +13,7 @@ public class AddressBook {
     public static final String MAP = "map";
     Map<String, ArrayList<Contacts>> map = new HashMap<>();
     Map<String, List<Contacts>> viewMap;
+    Map<String, Long> countMap;
     ArrayList<Contacts> list;
     Scanner sc = new Scanner(System.in);
     /*
@@ -384,7 +386,7 @@ public class AddressBook {
             }
         }
     }
-    
+
     /**
      * method to search contact from the map
      */
@@ -457,6 +459,59 @@ public class AddressBook {
                     break;
                 case 2:
                     viewPersonByStateList();
+                    break;
+                default:
+                    System.out.println("Please Choose Valid Option!");
+                    break;
+            }
+        }
+    }
+
+    /**
+     * created a method to count person by city from the arraylist
+     */
+    void countPersonByCityList() {
+        countMap = new HashMap<>();
+        list.stream()
+                .collect(groupingBy(Contacts::getCity, counting()))
+                .forEach((key, value) -> {
+                    countMap.merge(key, value, Long::sum);
+                });
+        countMap.forEach(((key, value) -> System.out.println("[" + key.toUpperCase() + "]" + "->" + value + "\n")));
+    }
+
+    /**
+     * created a method to count person by state from the arraylist
+     */
+    void countPersonByStateList() {
+        countMap = new HashMap<>();
+        list.stream()
+                .collect(groupingBy(Contacts::getState, counting()))
+                .forEach((key, value) -> {
+                    countMap.merge(key, value, Long::sum);
+                });
+        countMap.forEach(((key, value) -> System.out.println("[" + key.toUpperCase() + "]" + "->" + value + "\n")));
+    }
+
+    /**
+     * method to count the number contact in a list
+     */
+    void countPersonList() {
+        boolean exit = true;
+        while (exit) {
+            System.out.print("\nEnter 0 to exit \n1.Count Person By City \n2. Count Person By State");
+
+            int option = sc.nextInt();
+            sc.nextLine();
+            switch (option) {
+                case 0:
+                    exit = false;
+                    break;
+                case 1:
+                    countPersonByCityList();
+                    break;
+                case 2:
+                    countPersonByStateList();
                     break;
                 default:
                     System.out.println("Please Choose Valid Option!");
