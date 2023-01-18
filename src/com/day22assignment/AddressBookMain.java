@@ -67,6 +67,14 @@ public class AddressBookMain {
             case 6:
                 book.deleteAddressBook();
                 break;
+            case 7:
+                book.searchPersonFromList();
+                break;
+            case 8:
+                book.searchPersonFromMap();
+                break;
+            default:
+                System.out.println("Please choose between 1 to 8");
         }
     }
 
@@ -78,7 +86,7 @@ public class AddressBookMain {
     private static int showAddressBookMenu() {
         System.out.println("\nEnter 0 to exit\n");
         System.out.print("1. Add New AddressBook \n2. Display AddressBook \n3. Open Old AddressBook \n4. Edit From Multiple Book" +
-                "\n5. Delete From Multiple Book \n6. Delete AddressBook");
+                "\n5. Delete From Multiple Book \n6. Delete AddressBook \n7. Search from list \n8. Search from map");
         System.out.println("\nEnter your choice:");
 
         int choice;
@@ -121,7 +129,7 @@ public class AddressBookMain {
                 book.deleteContact(new Scanner(System.in).nextLine(), "");
                 break;
             default:
-                System.out.println("Please choose between 1 to 3");
+                System.out.println("Please choose between 1 to 4");
         }
     }
 }
