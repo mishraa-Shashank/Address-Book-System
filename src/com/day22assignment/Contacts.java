@@ -36,6 +36,15 @@ public class Contacts {
      * using getter & setter to get & set the values
      * @return
      */
+    public String getLastName() {
+        return lastName;
+    }
+    public String getAddress() {
+        return address;
+    }
+    public String getEmail() {
+        return emailAddress;
+    }
     public String getZip() {
         return zip;
     }
