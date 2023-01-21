@@ -579,33 +579,6 @@ public class AddressBook {
         }
     }
 
-
-    /**
-     * created a method to read the data from the csv file
-     */
-    void readAddressBookCsv() {
-        boolean flag = false;
-        try {
-            Scanner sc = new Scanner(new File("addressBook.csv"));
-            sc.useDelimiter(",");
-            while (sc.hasNextLine()) {
-                String data = sc.nextLine();
-                System.out.println(data);
-                if (!data.isEmpty()) {
-                    flag = true;
-                }
-            }
-            if (flag) {
-                System.out.println("Data Read Successfully.");
-            } else {
-                System.out.println("File Is Empty!");
-            }
-            sc.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
     /**
      * created a method to do sorting in the address book
      */
