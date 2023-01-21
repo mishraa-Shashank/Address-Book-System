@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -25,6 +26,9 @@ public class AddressBook {
     Map<String, List<Contacts>> viewMap;
     Map<String, Long> countMap;
     ArrayList<Contacts> list;
+    List<String[]> fileData;
+    List<Contacts> file;
+    List<Contacts> addressBookList;
     Scanner sc = new Scanner(System.in);
     /*
        Created Contacts Object for Getter and Setter Methods
@@ -671,6 +675,57 @@ public class AddressBook {
             }
         } catch (IOException exception) {
             exception.printStackTrace();
+        }
+    }
+
+    /**
+     * creating method to get connection with database(MySql) using java program
+     */
+    public Connection getConnection() throws SQLException {
+        String jdbcURL = "jdbc:mysql://localhost:3306/AddressBookDB";
+        String userName = "root";
+        String password = "Kirti";
+        Connection connection;
+        System.out.println("Connecting To Database : " + jdbcURL);
+        connection = DriverManager.getConnection(jdbcURL, userName, password);
+        System.out.println("Connection Is Successful : " + connection);
+        return connection;
+    }
+
+    /**
+     * created a getData() method to get the data from the database & added in the arraylist
+     */
+    void getData(ResultSet resultSet) throws SQLException {
+        addressBookList = new ArrayList<>();
+        while (resultSet.next()) {
+            Contacts person = new Contacts();
+            person.setFirstName(resultSet.getString("first_Name"));
+            person.setLastName(resultSet.getString("Last_name"));
+            person.setAddress(resultSet.getString("address"));
+            person.setCity(resultSet.getString("city"));
+            person.setState(resultSet.getString("state"));
+            person.setZip(resultSet.getString("zip"));
+            person.setPhoneNumber(resultSet.getString("phone_Number"));
+            person.setEmailAddress(resultSet.getString("email"));
+
+            addressBookList.add(person);
+        }
+    }
+
+    /**
+     * retrieving data from the database using arraylist
+     */
+    void retrieveData() {
+        addressBookList = new ArrayList<>();
+        try (Connection connection = getConnection()) {
+            Statement statement = connection.createStatement();
+            String sql = "select * from AddressBook";
+            ResultSet resultSet = statement.executeQuery(sql);
+            getData(resultSet);
+            addressBookList.forEach(System.out::println);
+            System.out.println("Data Retrieve Successfully.");
+        } catch (SQLException e) {
+            System.out.println(e);
         }
     }
 

@@ -90,6 +90,9 @@ public class AddressBookMain {
             case 14:
                 book.readAddressBookJson();
                 break;
+            case 15:
+                book.retrieveData();
+                break;
             default:
                 System.out.println("Please choose between 1 to 13");
         }
@@ -105,7 +108,7 @@ public class AddressBookMain {
         System.out.print("1. Add New AddressBook \n2. Display AddressBook \n3. Open Old AddressBook \n4. Edit From Multiple Book" +
                 "\n5. Delete From Multiple Book \n6. Delete AddressBook \n7. Search from list \n8. Search from map" +
                 "\n9. View Contact \n10. Count Contacts \n11. Sort contact \n12. Read Data From File" +
-                "\n13. Read data from the CSV file \n14. Read Data From JSON");
+                "\n13. Read data from the CSV file \n14. Read Data From JSON \n15. Retrieve Entries From DB");
         System.out.println("\nEnter your choice:");
 
         int choice;
