@@ -81,8 +81,11 @@ public class AddressBookMain {
             case 11:
                 book.sortPersonList();
                 break;
+            case 12 :
+                book.readAddressBookTxt();
+                break;
             default:
-                System.out.println("Please choose between 1 to 11");
+                System.out.println("Please choose between 1 to 12");
         }
     }
 
@@ -95,7 +98,7 @@ public class AddressBookMain {
         System.out.println("\nEnter 0 to exit\n");
         System.out.print("1. Add New AddressBook \n2. Display AddressBook \n3. Open Old AddressBook \n4. Edit From Multiple Book" +
                 "\n5. Delete From Multiple Book \n6. Delete AddressBook \n7. Search from list \n8. Search from map" +
-                "\n9. View Contact \n10. Count Contacts \n11. Sort contact");
+                "\n9. View Contact \n10. Count Contacts \n11. Sort contact \n12. Read Data From File");
         System.out.println("\nEnter your choice:");
 
         int choice;

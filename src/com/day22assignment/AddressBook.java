@@ -1,5 +1,7 @@
 package com.day22assignment;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -539,6 +541,23 @@ public class AddressBook {
                 .collect(Collectors.toList()).forEach(System.out::println);
     }
 
+    /**
+     * created a method to read the data from the text file
+     */
+    void readAddressBookTxt() {
+        try {
+            File file = new File("addressBook.txt");
+            Scanner sc = new Scanner(file);
+            while (sc.hasNextLine()) {
+                String data = sc.nextLine();
+                System.out.println(data);
+            }
+            System.out.println("Data Read Successfully.");
+            sc.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
     /**
      * created a method to do sorting in the address book
      */
