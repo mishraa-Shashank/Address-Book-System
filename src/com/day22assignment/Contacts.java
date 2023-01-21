@@ -36,6 +36,9 @@ public class Contacts {
      * using getter & setter to get & set the values
      * @return
      */
+    public String getFirstName() {
+        return firstName;
+    }
     public String getPhoneNumber() {
         return this.phoneNumber;
     }
