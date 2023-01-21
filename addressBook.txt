@@ -1,0 +1,4 @@
+Contacts {firstName = 'Shashank' , lastName = 'Mishra' , address = 'Prayagraj' , city = 'Prayagraj' , state = 'Uttar Pradesh' , zip = '211011' , phoneNumber = '8081176945' , emailAddress = 'shashank@gmail.com'}
+Contacts {firstName = 'Shubhanshu' , lastName = 'Tiwari' , address = 'Kareli' , city = 'Prayagraj' , state = 'Uttar Pradesh' , zip = '211016' , phoneNumber = '8081176786' , emailAddress = 'shubhanshu@gmail.com'}
+Contacts {firstName = 'Pandey' , lastName = 'ChandraMohan' , address = 'Jhalwa' , city = 'Prayagraj' , state = 'Uttar Pradesh' , zip = '211013' , phoneNumber = '8081176658' , emailAddress = 'chandramohan@gmail.com'}
+Contacts {firstName = 'Shreyansh' , lastName = 'Shukla' , address = 'Transport Nagar' , city = 'Prayagraj' , state = 'Uttar Pradesh' , zip = '211012' , phoneNumber = '8081176458' , emailAddress = 'shreyansh@gmail.com'}
