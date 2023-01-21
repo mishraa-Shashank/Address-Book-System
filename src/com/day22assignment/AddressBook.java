@@ -1,7 +1,13 @@
 package com.day22assignment;
 
+import com.opencsv.CSVWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -542,6 +548,21 @@ public class AddressBook {
     }
 
     /**
+     * created a method to write a data in the text file
+     */
+    void writeAddressBookTxt() {
+        StringBuilder buffer = new StringBuilder();
+        map.keySet().forEach(key -> map.get(key)
+                .forEach(c -> buffer.append(c.toString().concat("\n"))));
+        try {
+            Path path = Paths.get("addressBook.txt");
+            Files.write(path, buffer.toString().getBytes());
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    /**
      * created a method to read the data from the text file
      */
     void readAddressBookTxt() {
@@ -558,6 +579,58 @@ public class AddressBook {
             e.printStackTrace();
         }
     }
+
+    /**
+     * created a method to write a data in the csv
+     */
+    void writeAddressBookCsv() {
+        Path path = Paths.get("addressBook.csv");
+        try {
+            FileWriter fileFilter = new FileWriter(path.toFile());
+            CSVWriter writer = new CSVWriter(fileFilter);
+            fileData = new ArrayList<>();
+            String[] header = {"FirstName", "LastName", "Address", "City", "State",
+                    "ZipCode", "PhoneNumber", "EmailId"};
+            fileData.add(header);
+
+            map.values().forEach(value -> value.stream().map(contact -> new String[]{contact.getFirstName(),
+                    contact.getLastName(), contact.getAddress(), contact.getCity(),
+                    contact.getState(), contact.getZip(), contact.getPhoneNumber(),
+                    contact.getEmailAddress()}).forEach(info -> fileData.add(info)));
+
+            writer.writeAll(fileData);
+            writer.close();
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    /**
+     * created a method to read the data from the csv file
+     */
+    void readAddressBookCsv() {
+        boolean flag = false;
+        try {
+            Scanner sc = new Scanner(new File("addressBook.csv"));
+            sc.useDelimiter(",");
+            while (sc.hasNextLine()) {
+                String data = sc.nextLine();
+                System.out.println(data);
+                if (!data.isEmpty()) {
+                    flag = true;
+                }
+            }
+            if (flag) {
+                System.out.println("Data Read Successfully.");
+            } else {
+                System.out.println("File Is Empty!");
+            }
+            sc.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * created a method to do sorting in the address book
      */
