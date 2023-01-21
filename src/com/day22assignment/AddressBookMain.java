@@ -89,6 +89,7 @@ public class AddressBookMain {
         }
     }
 
+    
     /**
      * show the menu of operation to perform on address book
      *
@@ -98,7 +99,8 @@ public class AddressBookMain {
         System.out.println("\nEnter 0 to exit\n");
         System.out.print("1. Add New AddressBook \n2. Display AddressBook \n3. Open Old AddressBook \n4. Edit From Multiple Book" +
                 "\n5. Delete From Multiple Book \n6. Delete AddressBook \n7. Search from list \n8. Search from map" +
-                "\n9. View Contact \n10. Count Contacts \n11. Sort contact \n12. Read Data From File");
+                "\n9. View Contact \n10. Count Contacts \n11. Sort contact \n12. Read Data From File" +
+                "\n13. Read Data From CSV");
         System.out.println("\nEnter your choice:");
 
         int choice;
