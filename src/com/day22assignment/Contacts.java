@@ -1,4 +1,5 @@
 package com.day22assignment;
+
 /**
  * @author Shashank
  */
@@ -34,11 +35,13 @@ public class Contacts {
 
     /**
      * using getter & setter to get & set the values
+     *
      * @return
      */
     public String getLastName() {
         return lastName;
     }
+
     public String getEmailAddress() {
         return emailAddress;
     }
@@ -46,18 +49,23 @@ public class Contacts {
     public String getAddress() {
         return address;
     }
+
     public String getZip() {
         return zip;
     }
+
     public String getFirstName() {
         return firstName;
     }
+
     public String getPhoneNumber() {
         return this.phoneNumber;
     }
+
     public String getCity() {
         return this.city;
     }
+
     public String getState() {
         return this.state;
     }

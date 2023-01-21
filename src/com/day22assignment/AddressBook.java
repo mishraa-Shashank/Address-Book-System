@@ -1,6 +1,8 @@
 package com.day22assignment;
 
 import com.opencsv.CSVWriter;
+import com.google.gson.Gson;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -71,6 +73,7 @@ public class AddressBook {
 
     /**
      * method to check the duplication in list
+     *
      * @param phoneNumber - phone number as a parameter
      * @return
      */
@@ -257,6 +260,7 @@ public class AddressBook {
             }
         }
     }
+
     /**
      * create a function to edit details from the multiple book
      */
@@ -344,6 +348,7 @@ public class AddressBook {
             }
         } while (option != 0);
     }
+
     /**
      * created a method to search person by city from the map
      */
@@ -354,6 +359,7 @@ public class AddressBook {
                 .stream().filter(i -> i.getCity().equals(searchByCity))
                 .collect(Collectors.toList()).forEach(System.out::println));
     }
+
     /**
      * created a method to search person by state from the map
      */
@@ -364,6 +370,7 @@ public class AddressBook {
                 .stream().filter(i -> i.getState().equals(searchByState))
                 .collect(Collectors.toList()).forEach(System.out::println));
     }
+
     /**
      * created a method to search person by city from the arraylist
      */
@@ -373,6 +380,7 @@ public class AddressBook {
         list.stream().filter(i -> i.getCity().equals(searchByCity))
                 .collect(Collectors.toList()).forEach(System.out::println);
     }
+
     /**
      * created a method to search person by state from the arraylist
      */
@@ -382,6 +390,7 @@ public class AddressBook {
         list.stream().filter(i -> i.getState().equals(searchByState))
                 .collect(Collectors.toList()).forEach(System.out::println);
     }
+
     /**
      * method to search the contact from the address book
      */
@@ -628,6 +637,40 @@ public class AddressBook {
             sc.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+        }
+    }
+
+    /**
+     * created a method to write a data in the json file
+     */
+    void writeAddressBookJson() {
+        try {
+            file = new ArrayList<>();
+            Gson gson = new Gson();
+            FileWriter writer = new FileWriter("addressBook.json");
+            map.values().forEach(value -> file.addAll(value));
+            String json = gson.toJson(file);
+            writer.write(json);
+            writer.close();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    /**
+     * created a method to read the data from the json file
+     */
+    void readAddressBookJson() {
+        try {
+            String reader = new String(Files.readAllBytes(Paths.get("addressBook.json")));
+            if (reader.isEmpty()) {
+                System.out.println("File Is Empty!");
+            } else {
+                System.out.println(reader);
+                System.out.println("Data Read Successfully.");
+            }
+        } catch (IOException exception) {
+            exception.printStackTrace();
         }
     }
 
