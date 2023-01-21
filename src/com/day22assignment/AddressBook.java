@@ -299,7 +299,9 @@ public class AddressBook {
         int option = sc.nextInt();
         do {
             System.out.println("\nEnter 0 to exit\n");
-            System.out.print("1. Add Contact \n2. Edit Contact \n3. Delete Contact \n4. View Contact");
+            System.out.print("1. Add Contact \n2. Edit Contact \n3. Delete Contact \n4. View Contact" +
+                    "\n5. Search contact (City/State) \n6. View contact (City/State) \n7. Count contact (City/State)" +
+                    "\n8. Sort by name");
             sc.nextLine();
             switch (option) {
                 case 1:
@@ -315,6 +317,18 @@ public class AddressBook {
                     break;
                 case 4:
                     showContacts();
+                    break;
+                case 5:
+                    searchPersonFromList();
+                    break;
+                case 6:
+                    viewPersonFromList();
+                    break;
+                case 7:
+                    countPersonList();
+                    break;
+                case 8:
+                    sortByNameList();
                     break;
                 default:
                     System.out.println("Please Choose Valid Option!");
@@ -491,6 +505,14 @@ public class AddressBook {
                     countMap.merge(key, value, Long::sum);
                 });
         countMap.forEach(((key, value) -> System.out.println("[" + key.toUpperCase() + "]" + "->" + value + "\n")));
+    }
+
+    /**
+     * created a method to sort person by name
+     */
+    void sortByNameList() {
+        list.stream().sorted(Comparator.comparing(Contacts::getFirstName))
+                .collect(Collectors.toList()).forEach(System.out::println);
     }
 
     /**
