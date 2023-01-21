@@ -516,6 +516,65 @@ public class AddressBook {
     }
 
     /**
+     * created a method to sort person by city
+     */
+    void sortByCityList() {
+        list.stream().sorted(Comparator.comparing(Contacts::getCity))
+                .collect(Collectors.toList()).forEach(System.out::println);
+    }
+
+    /**
+     * created a method to sort person by state
+     */
+    void sortByStateList() {
+        list.stream().sorted(Comparator.comparing(Contacts::getState))
+                .collect(Collectors.toList()).forEach(System.out::println);
+    }
+
+    /**
+     * created a method to sort person by zip
+     */
+    void sortByZipList() {
+        list.stream().sorted(Comparator.comparing(Contacts::getZip))
+                .collect(Collectors.toList()).forEach(System.out::println);
+    }
+
+    /**
+     * created a method to do sorting in the address book
+     */
+    void sortPersonList() {
+        boolean exit = true;
+        while (exit) {
+            System.out.print("\nEnter 0 to exit \n1.Sort Person By City \n2. Sort Person By State \n3. Sort Person By Name" +
+                    "\n4. Sort Person By Zip");
+            System.out.print(" 0.Exit \n->");
+
+            int option = sc.nextInt();
+            sc.nextLine();
+            switch (option) {
+                case 1:
+                    sortByCityList();
+                    break;
+                case 2:
+                    sortByStateList();
+                    break;
+                case 3:
+                    sortByNameList();
+                    break;
+                case 4:
+                    sortByZipList();
+                    break;
+                case 0:
+                    exit = false;
+                    break;
+                default:
+                    System.out.println("Please Choose Valid Option!");
+                    break;
+            }
+        }
+    }
+
+    /**
      * method to count the number contact in a list
      */
     void countPersonList() {
