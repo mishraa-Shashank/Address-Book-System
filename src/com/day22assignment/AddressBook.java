@@ -1,10 +1,6 @@
 package com.day22assignment;
 
-import com.opencsv.CSVWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -23,6 +19,7 @@ public class AddressBook {
     Map<String, List<Contacts>> viewMap;
     Map<String, Long> countMap;
     ArrayList<Contacts> list;
+    List<String[]> fileData;
     Scanner sc = new Scanner(System.in);
     /*
        Created Contacts Object for Getter and Setter Methods
@@ -587,7 +584,7 @@ public class AddressBook {
         Path path = Paths.get("addressBook.csv");
         try {
             FileWriter fileFilter = new FileWriter(path.toFile());
-            CSVWriter writer = new CSVWriter(fileFilter);
+            PrintWriter writer = new PrintWriter(fileFilter);
             fileData = new ArrayList<>();
             String[] header = {"FirstName", "LastName", "Address", "City", "State",
                     "ZipCode", "PhoneNumber", "EmailId"};
@@ -598,7 +595,6 @@ public class AddressBook {
                     contact.getState(), contact.getZip(), contact.getPhoneNumber(),
                     contact.getEmailAddress()}).forEach(info -> fileData.add(info)));
 
-            writer.writeAll(fileData);
             writer.close();
         } catch (IOException exception) {
             exception.printStackTrace();
